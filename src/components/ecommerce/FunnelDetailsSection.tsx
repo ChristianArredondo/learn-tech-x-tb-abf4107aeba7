@@ -1,10 +1,15 @@
-import { Row, Col, Card, Statistic, Empty } from 'antd';
-import { blue } from '@ant-design/colors'
+import { Card, Statistic, Empty } from 'antd';
 import useFetchOnce from '@/utils/client/useFetchOnce';
 
 const ENDPOINT_URL = '/api/ecommerce/funnel-details';
 
 const gridStyle: React.CSSProperties = {
+    width: '25%',
+    textAlign: 'start',
+};
+
+const gridStyleImage: React.CSSProperties = {
+    padding: 0,
     width: '25%',
     textAlign: 'start',
 };
@@ -34,7 +39,7 @@ export default function FunnelDetailsSection(): React.ReactNode {
     const percenNet = CalculatePercentage(numPurchases, numSessions);
 
     let content = null;
-    let image = null;
+    
     if (isLoading) {
         content = (
             <Card>
@@ -81,11 +86,7 @@ export default function FunnelDetailsSection(): React.ReactNode {
                     />
                     <span style={{ fontSize: 14, color: "#003a8c" }}>({percenPurchases})</span>
                 </Card.Grid>
-            </Card>
-        )
-        image = (
-            <Card>
-                <Card.Grid style={gridStyle}>
+                <Card.Grid style={gridStyleImage}>
                     <div style={
                         {
                             borderTop: "50px solid #003a8c",
@@ -93,41 +94,54 @@ export default function FunnelDetailsSection(): React.ReactNode {
                             borderLeft: "50px solid #003a8c",
                             borderRight: "50px solid #003a8c",
                             backgroundColor: "#003a8c",
-                            height: 0,
+                            height: "120px",
                             width: "100%"
                         }
                     }></div>
                 </Card.Grid>
-                <Card.Grid style={gridStyle}>
+                <Card.Grid style={gridStyleImage}>
                     <div style={
                         {
-                            borderTop: "50px solid transparent",
-                            borderBottom: "50px solid transparent",
-                            borderLeft: "100px solid #0958d9",
-                            height: 0,
+                            borderTop: "30px solid transparent",
+                            borderBottom: "30px solid transparent",
+                            borderLeft: "217px solid #0958d9",
+                            borderRight: "0px solid transparent",
+                            height: "120px",
                             width: "100%"
                         }
                     }></div>
                 </Card.Grid>
-                <Card.Grid style={gridStyle}>
+                <Card.Grid style={{
+                    padding: 0,
+                    paddingTop: "3.5%",
+                    width: '25%',
+                    textAlign: 'start',
+                }}>
                     <div style={
                         {
-                            borderTop: "50px solid transparent",
-                            borderBottom: "50px solid transparent",
-                            borderLeft: "100px solid #4096ff",
-                            height: 0,
+                            borderTop: "15px solid transparent",
+                            borderBottom: "15px solid transparent",
+                            borderLeft: "217px solid #40a9ff",
+                            borderRight: "0px solid transparent",
+                            height: "60px",
                             width: "100%"
                         }
                     }></div>
                 </Card.Grid>
-                <Card.Grid style={gridStyle}>
-                <div style={
+                <Card.Grid style={{
+                    padding: 0,
+                    paddingTop: "5.2%",
+                    width: '25%',
+                    textAlign: 'end',
+                }}>
+                    <div style={
                         {
-                            borderTop: "50px solid transparent",
-                            borderBottom: "50px solid transparent",
-                            borderLeft: "100px solid #91caff",
-                            height: 0,
-                            width: "100%"
+                            borderTop: "7.5px solid transparent",
+                            borderBottom: "7.5px solid transparent",
+                            borderLeft: "217px solid #91caff",
+                            borderRight: "0px solid transparent",
+                            height: "30px",
+                            width: "100%",
                         }
                     }></div>
 
@@ -145,7 +159,6 @@ export default function FunnelDetailsSection(): React.ReactNode {
         <section style={{ marginBottom: 48, padding: 16 }}>
             <h2 style={{ fontSize: 24, marginBottom: 16 }}>Funnel Details</h2>
             {content}
-            {image}
         </section>
     );
 }
